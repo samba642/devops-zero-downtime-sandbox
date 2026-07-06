@@ -6,12 +6,19 @@ on:
       - main
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout Code
       uses: actions/checkout@v4
+
+    # This mimics our old Jenkins 'Build Docker Image' stage
+    - name: Simulate Docker Build (Migrated from Jenkins)
+      run: |
+        echo "Building Docker image..."
+        echo "Image tag: samba642/my-devops-app:latest"
+        echo "Docker Build complete successfully!"
 
     - name: Deploy to EC2 via SSH
       uses: appleboy/ssh-action@v1.0.3
@@ -21,7 +28,5 @@ jobs:
         key: ${{ secrets.AWS_SSH_KEY }}
         script: |
           echo "Successfully connected to AWS VM!"
-          sudo apt-get update -y
-          sudo apt-get install nginx -y
-          echo "<h1>Hello from GitHub Actions Automation!</h1>" | sudo tee /var/www/html/index.html
+          echo "<h1>Hello from Migrated GitHub Actions Pipeline! Version 2.0</h1>" | sudo tee /var/www/html/index.html
           sudo systemctl restart nginx
