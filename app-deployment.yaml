@@ -25,7 +25,7 @@ data:
                         <a href="#" class="flex items-center space-x-3 bg-gray-900 text-indigo-400 p-3 rounded-lg font-medium"><span>📊</span> <span>Dashboard</span></a>
                     </nav>
                 </div>
-                <div class="text-xs text-gray-500 text-center">v1.0.0 (Stable Canary)</div>
+                <div class="text-xs text-gray-500 text-center">v2.0.0 (New Relese)</div>
             </div>
             <div class="flex-1 flex flex-col overflow-hidden">
                 <header class="bg-gray-800 border-b border-gray-700 p-4 flex justify-between items-center">
@@ -67,7 +67,7 @@ spec:
     spec:
       containers:
       - name: web-container
-        image: nginx:1.25
+        image: nginx:1.25.5
         ports:
         - containerPort: 80
         volumeMounts:
